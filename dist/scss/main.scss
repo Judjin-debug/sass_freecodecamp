@@ -1,3 +1,5 @@
+@import './resets';
+
 $primary-color: #272727;
 $accent-color: #ff652f;
 $text-color: #fff;
@@ -6,14 +8,6 @@ $font-weights: (
     "medium": 500,
     "bold": 700
 );
-
-html {
-    box-sizing: border-box;
-}
-
-*, *::before, *::after {
-    box-sizing: inherit;
-}
 
 body {
     background: $primary-color;
