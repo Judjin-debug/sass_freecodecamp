@@ -1,16 +1,62 @@
-$primary-color: #272727;
-$accent-color: #ff652f;
-$text-color: #fff;
+@import './resets';
+@import './variables';
 
-html {
-    box-sizing: border-box;
-}
+@function weight($weight-name) {
+    @return map-get($font-weights, $weight-name)
+};
 
-*, *::before, *::after {
-    box-sizing: inherit;
-}
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+};
+
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    };
+};
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content
+    };
+};
 
 body {
     background: $primary-color;
+    color: $text-color;
 }
 
+.main {
+    @include flexCenter(row);
+    width: 80% - 20%;
+    margin: 0 auto;
+
+    #{&}__paragraph-1 {
+        font-weight: weight(bold);
+
+        &:hover {
+            color: pink;
+        }
+    }
+
+    #{&}__paragraph-2 {
+        @extend .main__paragraph-1;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+
+}
+
+.light {
+    @include theme($light-theme: true);
+}
