@@ -1,0 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #272727;
+}/*# sourceMappingURL=main.css.map */
